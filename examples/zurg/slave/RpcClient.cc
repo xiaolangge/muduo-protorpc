@@ -61,7 +61,7 @@ RpcClient::RpcClient(EventLoop* loop, const SlaveConfig& config)
   LOG_DEBUG << "syncResolve " << masterAddr;
   InetAddress addr = syncResolve(masterAddr);
   LOG_DEBUG << masterAddr << " resolved to " << addr.toIpPort();
-  if (addr.ipNetEndian() > 0 && addr.portNetEndian() > 0)
+  if (addr.ipv4NetEndian() > 0 && addr.portNetEndian() > 0)
   {
     client_.reset(new TcpClient(loop, addr, "RpcClient"));
   }
